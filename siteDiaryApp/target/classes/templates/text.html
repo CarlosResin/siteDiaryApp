@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset = "ISO-8859-1">
+<title>SiteDiary Description</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+
+</head>
+<body>
+	<div align="center">
+	<div class="container text-center">
+		<h1><p>User: <b>[[${#request.userPrincipal.principal.fullName}]]</b></p></h1>
+		<a href="new">Click Here to Add a New Site Diary</a>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Diary Id</th>
+					<th>User</th>
+					<th>Activities</th>
+					<th>Date</th>
+					<th>Weather</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="diarytext : ${listdiarytext}">
+					<td th:text="${diarytext.id}">Diary Id</td>
+					<td th:text="${diarytext.user}">User</td>
+					<td th:text="${diarytext.activities}">Activities</td>
+					<td th:text="${diarytext.date}">Date</td>
+					<td th:text="${diarytext.weather}">Weather</td>
+					<td>
+						<a th:href="@{'/edit/' + ${diarytext.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/delete/' + ${diarytext.id}}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>	
+		<div>
+			<form th:action ="@{/logout}" method ="post">
+				<input type="submit" value="Sign Out" class="btn btn-info" />
+			</form>
+		</div>
+	</div>
+	</div>
+	
+</body>
+</html>
+	

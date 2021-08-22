@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset = "ISO-8859-1">
+<title>SiteDiary Menu</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+
+</head>
+<body>
+	<div class="container text-center">
+		<div>
+			<form th:action ="@{/logout}" method ="post">
+				<p>
+					Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+					<h3><a th:href="@{/text}">Click Here to Review or Add to Your Site Diary Records</a></h3>
+				</p>	
+				<input type="submit" value="Sign Out" class="btn btn-info" />
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+	
